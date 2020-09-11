@@ -26,4 +26,11 @@ public abstract class AbstractDocument {
     public PageSize getPageSize() {
         return pageSize;
     }
+
+    @Override
+    public String toString() {
+        return "Тип документа: " + typeName +
+                ", Время печати: " + printTime +
+                ", Размер листа:" + pageSize;
+    }
 }
