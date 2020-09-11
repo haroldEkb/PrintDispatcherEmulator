@@ -1,7 +1,6 @@
 import document.AbstractDocument;
 import document.DocumentSort;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
@@ -48,6 +47,6 @@ public class PrintDispatcher {
 
     public List<AbstractDocument> stop(){
         printer.shutdown();
-        return new ArrayList<AbstractDocument>(queue);
+        return printer.getWaitingDocuments();
     }
 }
