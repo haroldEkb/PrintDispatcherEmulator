@@ -4,11 +4,11 @@ package document;
  * @author haroldekb@mail.ru
  **/
 
-public class SmallDocument extends AbstractDocument {
+public class DWGDocument extends AbstractDocument {
     private final String content;
 
-    public SmallDocument(String content) {
-        super(1000, ".DOCX", PageSize.A5);
+    public DWGDocument(String content) {
+        super(3000, "DWG", PageSize.A3);
         this.content = content;
     }
 

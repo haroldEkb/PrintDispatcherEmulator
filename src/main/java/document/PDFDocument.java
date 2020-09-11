@@ -4,11 +4,11 @@ package document;
  * @author haroldekb@mail.ru
  **/
 
-public class SmallDocument extends AbstractDocument {
+public class PDFDocument extends AbstractDocument {
     private final String content;
 
-    public SmallDocument(String content) {
-        super(1000, ".DOCX", PageSize.A5);
+    public PDFDocument(String content) {
+        super(2000, "PDF", PageSize.A4);
         this.content = content;
     }
 

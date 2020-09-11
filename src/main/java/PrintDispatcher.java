@@ -1,6 +1,10 @@
+import comparator.DocumentTypeComparator;
+import comparator.PageSizeComparator;
+import comparator.PrintTimeComparator;
 import document.AbstractDocument;
 import document.DocumentSort;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
@@ -23,9 +27,7 @@ public class PrintDispatcher {
     }
 
     public void cancelPrinting(AbstractDocument document){
-        if (queue.contains(document)) {
-            queue.remove(document);
-        }
+        queue.remove(document);
     }
 
     public List<AbstractDocument> getPrintedDocumentsList(){
@@ -33,7 +35,19 @@ public class PrintDispatcher {
     }
 
     public List<AbstractDocument> getPrintedDocumentsList(DocumentSort sort){
-        return printer.getPrintedDocuments();
+        List<AbstractDocument> list = printer.getPrintedDocuments();
+        switch (sort){
+            case DOC_TYPE:
+                Collections.sort(list, new DocumentTypeComparator());
+                break;
+            case PRINT_TIME:
+                Collections.sort(list, new PrintTimeComparator());
+                break;
+            case PAGE_SIZE:
+                Collections.sort(list, new PageSizeComparator());
+                break;
+        }
+        return list;
     }
 
     public double averagePrintTime(){
